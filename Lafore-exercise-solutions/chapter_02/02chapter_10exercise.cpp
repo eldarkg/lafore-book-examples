@@ -5,8 +5,7 @@
 // и выдать на экран эту сумму в действующей системе (фунты, пенсы)
 // (имеем в виду, что в старой системе 1 фунт = 20 шиллингов = 240 пенсов, в новой: 1 фунт = 100 пенсов)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setprecision
 using namespace std;
@@ -14,9 +13,9 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	float f, s, p; // количество фунтов, шиллингов и пенсов (устаревшая система)
 	float sum; // денежная сумма в действующей денежной системе Великобритании

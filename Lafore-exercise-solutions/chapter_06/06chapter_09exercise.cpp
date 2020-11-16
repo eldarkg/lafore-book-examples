@@ -3,8 +3,7 @@
 // 06chapter_09exercise.cpp
 // создать класс, представляющий обыкновенную дробь, на основе упражнения 8 главы 4
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -36,9 +35,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	wchar_t ch; // для ответа пользователя на вопрос о выходе из цикла
 	fraction f1, f2, f3; // создание трех объектов класса fraction

@@ -8,8 +8,7 @@
 // складывать значения из первых двух массивов и результаты сохранять в элементах
 // третьего массива.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -20,7 +19,7 @@ void display(float *, int);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const int SIZE = 7; // размер массивов
 	// три заданных массива

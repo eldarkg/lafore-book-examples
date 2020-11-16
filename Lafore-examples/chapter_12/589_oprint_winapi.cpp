@@ -8,8 +8,7 @@
 // я добавил в программу две строки для работы с локалью, чтобы можно было
 // читать русские буквы из файла в кодировке UTF-8
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для работы с потоками, связанными с файлами
 #include <sstream>   // для работы с потоками, связанными со строками
 #include <iostream>
@@ -29,9 +28,9 @@ BOOL toPrinter(LPCWSTR str);
 int wmain(int argc, wchar_t* argv[])
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ошибок в формат Юникода
-	_setmode(_fileno(stderr), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// создаем константу, содержащую локаль с нужным фасетом для
 	// преобразования символов при чтении из файла в кодировке UTF-8

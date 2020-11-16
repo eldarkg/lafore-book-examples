@@ -6,8 +6,7 @@
 // программу инкремент и декремент счетчика в постфиксной форме. Подразумевается,
 // что оригинальные классы менять нельзя, а следует создать новый класс.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -75,7 +74,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Counter2 c1;                           // определение двух объектов класса Counter2
 	Counter2 c2(100);                      // с помощью двух разных конструкторов

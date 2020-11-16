@@ -3,15 +3,14 @@
 // comments.cpp
 // демонстрирует использование комментариев
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>  // директива препроцессора
 using namespace std; // директива using
 
 int main() // функция с именем main
 { // начало тела функции
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);  // оператор
+	locale::global(locale("ru_RU.UTF-8"));  // оператор
 
 	wcout << L"У каждой эпохи свой язык\n"; // оператор
 	return 0;                               // оператор

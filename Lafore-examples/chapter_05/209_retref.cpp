@@ -3,8 +3,7 @@
 // retref.cpp
 // возвращение значения по ссылке
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -14,7 +13,7 @@ int& setx(); // прототип функции
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// присваивание значения x при помощи вызова функции слева
 	setx() = 92;

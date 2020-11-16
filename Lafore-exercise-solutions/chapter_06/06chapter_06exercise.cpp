@@ -5,8 +5,7 @@
 // двумя полями (дата приема на работу и должность) и переписать соответственно
 // методы класса (см. упражнение 7 главы 4)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setw
 using namespace std;
@@ -50,9 +49,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	employee emp1, emp2, emp3; // создание трех объектов класса employee
 

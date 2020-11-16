@@ -3,8 +3,7 @@
 // rewobj.cpp
 // объекты класса person выполняют файловый ввод/вывод
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для файлового ввода/вывода
 #include <iostream>
 using namespace std;
@@ -62,9 +61,9 @@ int person::diskCount()
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	person p;   // создать пустой объект класса person
 	wchar_t ch;

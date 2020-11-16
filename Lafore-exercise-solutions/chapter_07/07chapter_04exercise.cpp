@@ -4,8 +4,7 @@
 // программа получает от пользователя целые числа и сохраняет их в массив,
 // написать функцию, находящую наибольшее из полученных чисел
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -14,9 +13,9 @@ int maxint(int [], int); // прототип функции
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const int SIZE = 100; // размер массива
 	int numbers[SIZE];    // сам массив целых чисел

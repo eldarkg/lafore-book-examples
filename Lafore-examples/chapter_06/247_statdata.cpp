@@ -3,8 +3,7 @@
 // statdata.cpp
 // статические данные класса
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -24,7 +23,7 @@ int foo::count = 0;   // определение count
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	foo f1, f2, f3; // создание трех объектов
 

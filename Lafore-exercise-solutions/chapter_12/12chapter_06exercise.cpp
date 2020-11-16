@@ -14,8 +14,7 @@
 // полям класса (getData, showData), чтобы соблюсти принцип сокрытия данных.
 // И еще добавлен метод, возвращающий число записей в файле.
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для файлового ввода/вывода
 #include <iostream>
 // #include <string> // для работы с классом wstring не понадобился
@@ -48,9 +47,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	name id;    // паспорт работника
 	wchar_t ch; // для ответа пользователя (д/н)

@@ -14,8 +14,7 @@
 // измеряется в квадратных футах. Поэтому наша перегруженная операция будет возвращать
 // не объект класса Distance, а вещественное число квадратных футов.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -51,9 +50,9 @@ float operator* (Distance d1, Distance d2)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Distance dist1 = 2.5;  // (для конвертации вещественных чисел в объекты класса
 	Distance dist2 = 1.25; // Distance используется конструктор с одним аргументом)

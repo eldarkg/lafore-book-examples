@@ -5,17 +5,16 @@
 // Пользователь задает число гостей и число мест за столом.
 // Условие: число гостей не меньше числа мест за столом.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int g, m; // число гостей и мест за столом
 	int res;  // число возможных рассадок гостей за столом

@@ -18,8 +18,7 @@
 // для объекта же класса wostringstream этого не требуется, так как строка класса
 // wstring не требует завершения нулевым символом
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <sstream>
 #include <iomanip>   // для функций setiosflags и setprecision
 #include <iostream>
@@ -28,7 +27,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wchar_t ch = L'ы';                  // тестовые данные (в т.ч. и русские буквы)
 	int j = 77;

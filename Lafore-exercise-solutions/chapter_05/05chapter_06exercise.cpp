@@ -13,8 +13,7 @@
 // time_to_secs принимает структурное значение типа time, возвращает эквивалент в секундах типа long;
 // secs_to_time принимает значение типа long в секундах, возвращает эквивалент типа time
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -31,9 +30,9 @@ time secs_to_time(long s);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	time t, t1, t2; // три переменные для хранения времени в часах, минутах и секундах
 	long totalsecs; // для хранения времени в секундах

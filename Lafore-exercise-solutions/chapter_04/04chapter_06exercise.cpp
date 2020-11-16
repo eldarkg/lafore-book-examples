@@ -5,8 +5,7 @@
 // Реализовать в программе ввод должности с клавиатуры по первой букве должности
 // и вывод названия должности на экран в текстовом виде.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <process.h> // для функции exit() не понадобился
 using namespace std;
@@ -17,9 +16,9 @@ enum etype {рабочий, секретарь, менеджер, бухгалт
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	etype pos; // должность сотрудника
 	wchar_t ch; // вводимый с клавиатуры символ

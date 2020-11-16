@@ -3,15 +3,14 @@
 // ptrnote.cpp
 // доступ к элементам массива через указатель
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int intarray[5] = { 31, 54, 77, 52, 93 }; // массив из пяти целых чисел
 

@@ -3,8 +3,7 @@
 // mutable.cpp
 // демонстрация применения ключевого слова mutable к полю объекта-константы
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <string> // для стандартного класса wstring для работы со строками
 using namespace std;
@@ -36,7 +35,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// создаем объект-константу класса scrollbar
 	const scrollbar sbar(60, L"Приложение 1");

@@ -3,8 +3,7 @@
 // showprim.cpp
 // изображает распределение простых чисел
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <conio.h> // для функции _getwch не понадобился
 using namespace std;
@@ -12,7 +11,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const wchar_t WHITE = L'\x2588'; // белый цвет для простых чисел
 	const wchar_t GRAY  = L'\x2591'; // серый цвет для остальных чисел

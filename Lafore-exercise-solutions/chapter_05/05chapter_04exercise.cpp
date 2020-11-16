@@ -4,8 +4,7 @@
 // написать функцию, возвращающую наибольшее из двух значений типа Distance,
 // где Distance — структурная переменная, представляющая длину в английской системе
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -21,9 +20,9 @@ void engldisp(Distance d);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Distance dis1, dis2; // для первой и второй длин
 	

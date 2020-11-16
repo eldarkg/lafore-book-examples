@@ -10,8 +10,7 @@
 // указателей на объекты класса person согласно размеру зарплат. Реализовать
 // всю сортировку в функции salsort без обращения к другим функциям.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <string> // для работы со стандартным классом wstring
 using namespace std;
@@ -39,9 +38,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	void salsort(person**, int); // прототип функции сортировки
 	person* persPtr[100];        // массив указателей на объекты класса «человек»

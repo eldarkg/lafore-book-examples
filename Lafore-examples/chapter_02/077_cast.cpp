@@ -3,15 +3,14 @@
 // cast.cpp
 // работа со знаковыми и беззнаковыми переменными
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int intVar = 1500000000; // 1 500 000 000
 	intVar = (intVar * 10) / 10; // слишком большой результат

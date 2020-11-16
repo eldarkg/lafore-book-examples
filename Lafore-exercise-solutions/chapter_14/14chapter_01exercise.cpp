@@ -5,8 +5,7 @@
 // элементов массива. В функции main требуется проверить этот шаблон с типами
 // int, long, double и char (я еще добавил тип wchar_t).
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -26,7 +25,7 @@ T average(T* array, int size)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int intArr[] = { 2, -3, 5, 7 };             // проверка с типом int
 	wcout << average(intArr, 4) << endl;

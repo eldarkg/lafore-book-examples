@@ -3,8 +3,7 @@
 // dayenum.cpp
 // применение перечислений
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -14,7 +13,7 @@ enum days_of_week { Sun, Mon, Tue, Wed, Thu, Fri, Sat };
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	days_of_week day1, day2; // определения переменных, хранящих дни недели
 	day1 = Mon;              // инициализация переменных

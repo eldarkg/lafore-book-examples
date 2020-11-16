@@ -6,17 +6,16 @@
 // Программа должна выполнять операции сложения и вычитания над двумя денежными суммами,
 // кроме этого должна быть реализована операция умножения денежной суммы на вещественное число.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int oper;       // номер операции
 	int f1, s1, p1; // число фунтов, шиллингов и пенсов в первой сумме

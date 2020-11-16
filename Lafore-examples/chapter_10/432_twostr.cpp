@@ -3,15 +3,14 @@
 // twostr.cpp
 // определение строковой константы через массив и через указатель
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wchar_t str1[] = L"Определение через массив";
 	const wchar_t* str2 = L"Определение через указатель";

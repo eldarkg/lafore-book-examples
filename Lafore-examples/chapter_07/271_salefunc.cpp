@@ -3,8 +3,7 @@
 // salefunc.cpp
 // передача массива в виде параметра
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипуляторов setiosflags, setprecision, setw
 using namespace std;
@@ -17,7 +16,7 @@ void display(double[DISTRICTS][MONTHS]); // прототип функции
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// создание двумерного массива и определение значений его элементов
 	double sales[DISTRICTS][MONTHS] =

@@ -16,8 +16,7 @@
 // для использования небезопасной функции wcscpy
 #define _CRT_SECURE_NO_WARNINGS
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 // #include <string.h> // для функции wcscpy не понадобился
@@ -120,7 +119,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	//////////////////////////////////////////////////////////////////////////////////
 	// Программа из упражения 2 этой (9-й) главы (только заменил Pstring на Pstring2)

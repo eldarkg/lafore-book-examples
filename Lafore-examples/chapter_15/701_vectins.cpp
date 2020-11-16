@@ -3,8 +3,7 @@
 // vectins.cpp
 // демонстрирует применение методов вектора insert и erase
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <vector>    // для работы с контейнером vector
 using namespace std;
@@ -12,7 +11,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	int arr[] = { 100, 110, 120, 130 }; // массив типа int
 

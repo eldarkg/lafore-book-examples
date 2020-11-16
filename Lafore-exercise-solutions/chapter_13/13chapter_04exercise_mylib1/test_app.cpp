@@ -1,7 +1,6 @@
 ﻿// исходный текст программы сохранен в кодировке UTF-8 с сигнатурой
 
-#include <io.h>     // для функции _setmode
-#include <fcntl.h>  // для константы _O_U16TEXT
+#include <locale>
 #include <iostream> // для работы с std::wcout
 
 #include "mylib.h"  // интерфейс библиотеки классов
@@ -22,7 +21,7 @@ const buyer man(L"Илья", Фантастика, 1000);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	// в магазин зашел покупатель
 	std::wcout << L"Добро пожаловать, " << man.ret_name() << L"." << std::endl;

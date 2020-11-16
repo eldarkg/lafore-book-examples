@@ -14,8 +14,7 @@
 // иметь сопадающие имя и фамилию, чтобы показать, что мультимножество может
 // хранить объекты с одним и тем же ключом.
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <set>       // для работы с контейнером multiset
 #include <algorithm> // для алгоритма for_each
@@ -71,9 +70,9 @@ void displayPerson(const person* ptrP)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	// определим мультимножество и укажем наш функциональный объект,
 	// предназначенный для автоматической сортировки мультимножества

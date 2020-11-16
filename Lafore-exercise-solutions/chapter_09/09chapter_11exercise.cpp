@@ -6,8 +6,7 @@
 // новый класс pairStack, производный от Stack2. Этот новый класс должен
 // иметь два метода, позволяющие реализовать стек для пар чисел.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 // #include <process.h> // для функции exit не понадобился
@@ -79,7 +78,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Pair p1 = { 23, 56 },     // тестовые пары чисел
 		 p2 = { 8, 0 },

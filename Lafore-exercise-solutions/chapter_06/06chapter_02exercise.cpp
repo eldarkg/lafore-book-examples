@@ -3,8 +3,7 @@
 // 06chapter_02exercise.cpp
 // создать класс tollBooth, представляющий пункт взимания платежей за проезд по автостраде
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <conio.h> // для функции _getwche не понадобился
 #include <iomanip> // для манипулятора setprecision
@@ -36,7 +35,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wcout << L"Демонстрация работы пункта взимания платежей за проезд по автостраде.\n"
 		  << L"Нажатие клавиш \'д\' (да) и \'н\' (нет) будет означать соответственно автомобиль\n"

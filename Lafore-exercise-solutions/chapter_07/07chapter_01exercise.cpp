@@ -4,8 +4,7 @@
 // написать функцию reversit, переворачивающую заданную строку,
 // написать программу для демонстрации работы этой функции
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <cstring> // для функции wcslen (длина строки в символах) не понадобился
 using namespace std;
@@ -16,9 +15,9 @@ void reversit(wchar_t []); // прототип функции
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const int MAX = 80; // максимальная длина строки
 	wchar_t s[MAX];     // для строки, получаемой от пользователя

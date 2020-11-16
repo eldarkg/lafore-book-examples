@@ -3,8 +3,7 @@
 // find.cpp
 // ищет первый объект с заданным значением
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <algorithm> // для алгоритма find не понадобился
 using namespace std;
@@ -14,7 +13,7 @@ int arr[] = { 11, 22, 33, 44, 55, 66, 77, 88 };
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	int* ptr;
 

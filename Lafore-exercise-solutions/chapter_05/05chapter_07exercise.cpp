@@ -5,8 +5,7 @@
 // чтобы кроме аргумента типа double она могла принять аргументы с
 // типами wchar_t, int, long и float
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -19,9 +18,9 @@ double power(float n, int p = 2);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	double number_d;  // числа разных типов для возведения в степень
 	wchar_t number_w;

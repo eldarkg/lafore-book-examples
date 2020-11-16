@@ -17,8 +17,7 @@
 // Обратную косую черту (\) пришлось написать двойной (\\), так как ее можно
 // изобразить только такой управляющей последовательностью в строке.
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для файлового ввода/вывода
 #include <iostream>
 using namespace std;
@@ -26,7 +25,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const wchar_t* filename = L"g:\\тест.dat";
 	ifstream file;

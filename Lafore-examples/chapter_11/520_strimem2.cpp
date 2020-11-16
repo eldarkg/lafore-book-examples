@@ -12,8 +12,7 @@
 // для использования небезопасной функции wcscpy
 #define _CRT_SECURE_NO_WARNINGS
 
-#include <io.h>       // для функции _setmode
-#include <fcntl.h>    // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>   // для функций ввода/вывода
 // #include <cstring> // для функций wcslen и wcscpy не понадобился
 using namespace std;
@@ -97,7 +96,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	String s3 = L"Муха по полю пошла, муха денежку нашла.";
 	wcout << L"s3 = "; s3.display();   // вывести на экран строку s3

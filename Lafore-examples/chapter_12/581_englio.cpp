@@ -4,8 +4,7 @@
 // перегрузка операторов вставки (<<) и извлечения (>>) для реализации
 // вывода на экран и ввода с клавиатуры объектов класса Distance
 
-#include <io.h>       // для функции _setmode
-#include <fcntl.h>    // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -45,9 +44,9 @@ wostream& operator<<(wostream& s, Distance& d)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Distance dist1, dist2;            // определим два интервала
 	Distance dist3(11, 6.25);         // определим и инициализируем dist3

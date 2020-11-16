@@ -3,8 +3,7 @@
 // referst.cpp
 // передача структурной переменной по ссылке
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -20,7 +19,7 @@ void engldisp(Distance);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Distance d1 = { 12, 6.5 }; // инициализация d1 и d2
 	Distance d2 = { 10, 5.5 };

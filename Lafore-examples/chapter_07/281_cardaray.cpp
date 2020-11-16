@@ -3,8 +3,7 @@
 // cardaray.cpp
 // массив объектов класса игральных карт
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <cstdlib> // для функций srand и rand не понадобился
 #include <ctime>      // для функции time
@@ -56,7 +55,7 @@ void card::display() // вывод карты на экран
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	card deck[52]; // массив объектов класса, представляющего игральную карту
 	int j; // для счетчика циклов

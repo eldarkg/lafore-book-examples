@@ -5,8 +5,7 @@
 // и выдать на экран результат сложения этих двух дробей в таком же формате,
 // для хранения дробей использовать структуру
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -19,9 +18,9 @@ struct fraction // обыкновенная дробь
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	fraction f1, f2; // для хранения вводимых пользователем дробей
 	wchar_t slash;   // для косой черты

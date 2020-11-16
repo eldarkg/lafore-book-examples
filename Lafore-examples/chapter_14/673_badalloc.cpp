@@ -3,15 +3,14 @@
 // badalloc.cpp
 // демонстрация работы с встроенным в C++ классом исключения bad_alloc
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	const unsigned long SIZE = 10000; // требуемый размер области в памяти
 	char* ptr;                        // указатель на область в памяти

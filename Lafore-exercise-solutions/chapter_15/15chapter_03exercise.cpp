@@ -16,8 +16,7 @@
 // не в заголовочном файле <algorithm>, а в заголовочном файле <xutility>.
 // И разобраться в том, что там написано, очень сложно.
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <list>      // для контейнера list
 using namespace std;
@@ -25,9 +24,9 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	list<int> lint; // список целых чисел
 	int n;          // для целых чисел, получаемых от пользователя

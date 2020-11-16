@@ -16,8 +16,7 @@
 // (В операторе присваивания перед созданием нового мы удалим старый массив, которому
 // присваивается заданный.)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -68,7 +67,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const int ASIZE = 10; // количество элементов в массиве
 	Array arr1(ASIZE);     // создаем массив arr1

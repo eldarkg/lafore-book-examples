@@ -5,8 +5,7 @@
 // структуры sterling (из упражнения 10 главы 4), складывать эти значения
 // и выводить результат на экран, для этого разработать три функции
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -24,9 +23,9 @@ void outSterling(sterling s);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	sterling ster, ster1, ster2; // для суммы и слагаемых
 

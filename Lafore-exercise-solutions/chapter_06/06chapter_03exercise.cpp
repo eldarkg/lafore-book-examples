@@ -3,8 +3,7 @@
 // 06chapter_03exercise.cpp
 // создать класс time, представляющий момент (или отрезок) времени в часах, минутах и секундах
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -46,7 +45,7 @@ void time::add(time t1, time t2)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// создание двух инициализированных константных объектов класса time
 	const time t1(16, 30, 45),

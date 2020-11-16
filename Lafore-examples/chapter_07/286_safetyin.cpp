@@ -3,8 +3,7 @@
 // safetyin.cpp
 // избежание переполнения буфера
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setw
 using namespace std;
@@ -12,9 +11,9 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const int MAX = 10; // максимальный размер строки
 	wchar_t str[MAX];   // сама строка

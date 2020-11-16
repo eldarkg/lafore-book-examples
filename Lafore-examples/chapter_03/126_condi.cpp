@@ -6,15 +6,14 @@
 // (позиции в строке нумеруем с 0 до 79, т.е. всего 80 позиций;
 // первый раз 'x' выведем в 0-й позиции, далее в 8-й позиции, в 16-й и т.д.)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	for (int j = 0; j < 80; j++)            // для каждой позиции
 	{                                       // значение ch равно 'x', если

@@ -3,8 +3,7 @@
 // engconst.cpp
 // константные методы и константные аргументы
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -49,9 +48,9 @@ Distance Distance::add_dist(const Distance& d) const
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// определение двух длин с конструктором без аргументов
 	Distance dist1, dist3;

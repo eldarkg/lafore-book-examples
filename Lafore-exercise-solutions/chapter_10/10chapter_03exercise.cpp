@@ -9,8 +9,7 @@
 // на строки, а не самих строк. Кроме этого, нужно написать программу для
 // тестирования сортировки строк в функции main.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <cstring> // для функции wcscmp не понадобился
 using namespace std;
@@ -26,7 +25,7 @@ void order(const wchar_t **, const wchar_t **);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// массив указателей на строки (из примера 436_ptrtostr.cpp 10-й главы)
 	const wchar_t* arrptrs[SIZE] =

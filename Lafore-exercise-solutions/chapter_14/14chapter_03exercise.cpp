@@ -16,8 +16,7 @@
 // главы 14. То есть обработка требуемых ошибок в шаблоне класса уже есть,
 // нужно только трансформировать ее в механизм исключений.
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -54,9 +53,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	queue<int> q1;        // очередь с элементами типа int
 	int el;               // элемент очереди типа int

@@ -3,8 +3,7 @@
 // merge.cpp
 // объединяет два контейнера в третий
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <algorithm> // для алгоритма merge
 using namespace std;
@@ -16,7 +15,7 @@ int dest[8];                    // принимающий контейнер-р�
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	merge(src1, src1 + 5, src2, src2 + 3, dest); // выполнить объединение
 

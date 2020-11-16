@@ -4,8 +4,7 @@
 // простой вывод на принтер
 // (с помощью функций Windows API)
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <sstream>   // для работы с потоками, связанными со строками
 #include <iostream>
 #include <windows.h> // для функций WinAPI
@@ -19,7 +18,7 @@ BOOL toPrinter(LPCWSTR str);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// тестовые данные для вывода на принтер
 	const wchar_t* s1 = L"Сегодня ваше счастливое число — ";

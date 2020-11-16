@@ -3,15 +3,14 @@
 // fordemo.cpp
 // демонстрирует работу простейшего цикла for
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int j; // определение счетчика цикла
 	for (j = 0; j < 15; j++) // счетчик меняется от 0 до 14

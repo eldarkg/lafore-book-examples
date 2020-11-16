@@ -3,8 +3,7 @@
 // diskfun.cpp
 // запись в файл на диске и чтение из него множества объектов
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для файлового ввода/вывода
 #include <iostream>
 using namespace std;
@@ -30,9 +29,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wchar_t ch;                    // для ответа пользователя (д/н)
 	person pers;                   // создать объект класса person

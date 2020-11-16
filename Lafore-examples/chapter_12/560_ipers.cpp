@@ -3,8 +3,7 @@
 // ipers.cpp
 // чтение объекта класса person из файла
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для файлового ввода/вывода
 #include <iostream>
 using namespace std;
@@ -25,7 +24,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	person pers;     // создать объект класса person
 	                 // создать входной поток (связанный с файлом)

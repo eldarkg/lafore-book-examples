@@ -7,8 +7,7 @@
 // (возвращает возведенную в квадрат длину, хранящуюся в объекте класса)
 // (единица измерения возвращаемого значения — квадратный фут)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -41,7 +40,7 @@ float Distance::square() const
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Distance dist(3, 6.0); // зададим длину в 3 фута и 6 дюймов
 	float sqft;            // переменная для результата возведения в квадрат

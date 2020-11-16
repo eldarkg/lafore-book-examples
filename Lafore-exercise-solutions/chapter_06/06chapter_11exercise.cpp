@@ -4,8 +4,7 @@
 // Модифицировать калькулятор из упражнения 12 главы 5:
 // заменить структуру fraction (обыкновенная дробь) на класс (см. упражнение 9 главы 6)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -68,9 +67,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	fraction fr1, fr2, fr3; // для хранения обыкновенных дробей
 	wchar_t oper;           // знак операции

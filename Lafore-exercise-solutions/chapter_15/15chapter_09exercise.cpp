@@ -14,8 +14,7 @@
 // вообще удалены из языка C++. Вместо них предлагается использовать
 // функциональный адаптер std::bind.
 
-#include <io.h>       // для функции _setmode
-#include <fcntl.h>    // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <vector>     // для контейнера vector
 #include <string>     // для класса wstring
@@ -26,9 +25,9 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	vector<wstring> vect;                         // создадим вектор строк
 	vect.push_back(L"Колобок");                   // и заполним его строками

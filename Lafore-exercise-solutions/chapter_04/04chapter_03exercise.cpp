@@ -4,8 +4,7 @@
 // Программа для расчета объема помещения с использованием вложенных структур.
 // Размеры помещения указываются в футах и дюймах (1 фут = 12 дюймов).
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -25,9 +24,9 @@ struct Volume   // размер помещения
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Volume room; // создание структурной переменной типа Volume
 	float vol; // объем помещения

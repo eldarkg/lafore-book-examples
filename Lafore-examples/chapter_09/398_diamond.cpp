@@ -3,8 +3,7 @@
 // diamond.cpp
 // демонстрация неопределенности при множественном наследовании в форме ромба
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -27,7 +26,7 @@ class D : public B, public C
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	D objD; // объявляем объект класса D
 	

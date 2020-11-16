@@ -3,8 +3,7 @@
 // sstrchng.cpp
 // изменение частей строки с помощью стандартного класса string
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <string> // для стандартного класса string в языке C++
 using namespace std;
@@ -12,7 +11,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wstring s1(L"Все хорошо, прекрасная маркиза.");
 	wstring s2(L"принцесса");

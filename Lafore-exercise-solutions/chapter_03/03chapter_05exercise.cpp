@@ -4,17 +4,16 @@
 // При помощи цикла for изобразить на экране пирамиду из символов 'X' (кирпичики пирамиды).
 // Высота пирамиды — 20 строк (рядов).
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int N;             // высота пирамиды в строках (рядах)
 	// в условиях упражнения высота пирамиды фиксирована в 20 строк, но я запрашиваю у пользователя

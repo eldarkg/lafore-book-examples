@@ -4,17 +4,16 @@
 // Программа для сложения двух денежных сумм в устаревшей системе Великобритании, то есть
 // в фунтах, шиллингах и пенсах (1 фунт = 20 шиллингов, 1 шиллинг = 12 пенсов)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int f1, s1, p1; // число фунтов, шиллингов и пенсов в первой сумме
 	int f2, s2, p2; // число фунтов, шиллингов и пенсов во второй сумме

@@ -7,8 +7,7 @@
 // putmoney, а также метод madd для сложения двух объектов класса bMoney.
 // Написать программу для демонстрации работы этого класса.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипуляторов setiosflags, setprecision
 #include <sstream> // для стандартного класса wstringstream
@@ -52,9 +51,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const int MAX = 100; // количество элементов в массиве
 	bMoney ms[MAX];      // массив объектов класса bMoney (денежных сумм)

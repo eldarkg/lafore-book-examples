@@ -28,8 +28,7 @@
 // объясняет это тем, что последнее легче искать в тексте программы хоть визуально,
 // хоть с помощью инструмента поиска.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -76,7 +75,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// создание трех переменных нашего класса и демонстрация работы конструкторов
 	Int n1(13), n2 = 5, n3;

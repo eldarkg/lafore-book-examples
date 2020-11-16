@@ -3,8 +3,7 @@
 // copydeq.cpp
 // демонстрирует обычное применение алгоритма copy к двусторонним очередям
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <deque>        // для работы с контейнером deque
 // #include <algorithm> // не понадобился
@@ -13,7 +12,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	int arr1[] = { 1, 3, 5, 7, 9 };
 	int arr2[] = { 2, 4, 6, 8, 10 };

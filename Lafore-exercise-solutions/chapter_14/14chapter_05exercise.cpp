@@ -9,8 +9,7 @@
 // шаблона с массивами различных числовых базовых типов (я выбрал int, double
 // и wchar_t).
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -27,7 +26,7 @@ T amax(T* array, int size)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int ari[] = { 98, 54, -7, 65, 0, 3 };
 	wcout << amax(ari, 6) << endl;

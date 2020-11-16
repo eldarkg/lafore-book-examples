@@ -6,8 +6,7 @@
 // для использования небезопасных функций wcscpy и wcscat
 #define _CRT_SECURE_NO_WARNINGS
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <cstring> // для функций wcscpy, wcslen и wcscat не понадобился
 using namespace std;
@@ -42,7 +41,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	String s1(L"С Новым годом! ");    // конструктор с одним параметром
 	String s2 = L"С новым счастьем!"; // аналогично, но в другой форме

@@ -5,8 +5,7 @@
 // и выдать на экран таблицу умножения на это заданное число
 // в виде таблицы размером 20 строк на 10 столбцов (то есть содержащей всего 200 значений)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setw
 using namespace std;
@@ -14,9 +13,9 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	unsigned long n;
 	wcout << L"Введите число: "; wcin >> n;

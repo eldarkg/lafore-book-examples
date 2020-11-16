@@ -4,8 +4,7 @@
 // написать функцию swap, обменивающую значениями два своих аргумента типа int,
 // при этом изменяться должны значения переменных из вызывающей программы
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -14,9 +13,9 @@ void swap(int& n1, int& n2); // прототип функции
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int num1, num2; // для двух чисел
 	

@@ -17,8 +17,7 @@
 // Обратную косую черту (\) пришлось написать двойной (\\), так как ее можно
 // изобразить только такой управляющей последовательностью в строке.
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для файлового ввода/вывода
 #include <iostream>
 using namespace std;
@@ -30,9 +29,9 @@ int buff[MAX];
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ошибок в формат Юникода
-	_setmode(_fileno(stderr), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	for (int j = 0; j < MAX; j++)  // заполним буфер данными
 		buff[j] = j;

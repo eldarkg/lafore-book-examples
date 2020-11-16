@@ -4,8 +4,7 @@
 // Написать функцию hms_to_secs с тремя аргументами (часы, минуты, секунды) типа int.
 // Она должна возвращать эквивалент переданного ей времени в секундах (типа long).
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -14,9 +13,9 @@ long hms_to_secs(int h, int m, int s); // прототип функции
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int hr, min, sec; // для часов, минут и секунд
 	wchar_t colon;    // для двоеточия

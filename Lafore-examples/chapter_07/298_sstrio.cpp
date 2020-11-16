@@ -3,8 +3,7 @@
 // sstrio.cpp
 // ввод/вывод для строк стандартного класса string
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <string> // для стандартного класса string в языке C++
 using namespace std;
@@ -12,9 +11,9 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wstring full_name, nickname, address;
 	wstring greeting(L"Здравствуйте, ");

@@ -20,8 +20,7 @@
 // (индексы массива fmemory) имеют тип int, поэтому для моделирования части памяти
 // компьютера, в которой они хранятся, будем использовать массив pmemory типа int.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -74,7 +73,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Float var1 = 1.234f; // объявим и инициализируем две «переменные типа Float»
 	Float var2 = 5.678f;

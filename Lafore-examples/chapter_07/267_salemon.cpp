@@ -3,8 +3,7 @@
 // salemon.cpp
 // показ таблицы продаж с помощью двумерного массива
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипуляторов setiosflags, setprecision, setw
 using namespace std;
@@ -15,9 +14,9 @@ const int MONTHS = 3;    // количество месяцев работы о�
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int d, m;
 	double sales[DISTRICTS][MONTHS];

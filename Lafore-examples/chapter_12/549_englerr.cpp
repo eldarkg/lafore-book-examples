@@ -6,8 +6,7 @@
 // в комментариях используется понятие «пробельные символы» (white space), которое
 // включает пробелы, символы табуляции, символы новой строки
 
-#include <io.h>       // для функции _setmode
-#include <fcntl.h>    // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <string>     // для работы с классом wstring
 // #include <cstdlib> // для функций _wtoi, _wtof не понадобился
@@ -113,9 +112,9 @@ int isFeet(wstring str)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Distance d;                        // создадим объект класса Distance
 	wchar_t ans;

@@ -3,8 +3,7 @@
 // cubelist.cpp
 // подсчет кубов целых чисел от 1 до 10
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setw
 using namespace std;
@@ -12,7 +11,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int numb; // счетчик цикла
 	for (numb = 1; numb <= 10; numb++) // цикл от 1 до 10

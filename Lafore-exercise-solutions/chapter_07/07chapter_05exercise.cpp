@@ -5,8 +5,7 @@
 // от пользователя, сохраняет их в массив, а затем вычисляет среднее значение и
 // выводит результат на экран
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -53,9 +52,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	const int SIZE = 100; // размер массива
 	fraction f[SIZE];     // сам массив обыкновенных дробей

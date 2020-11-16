@@ -3,8 +3,7 @@
 // sortptrs.cpp
 // сортирует объекты класса person в списке с указателями на эти объекты
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <vector>       // для работы с контейнером vector
 #include <algorithm>    // для алгоритмов sort и for_each
@@ -73,7 +72,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	vector<person*> vectPtrsPers;   // вектор указателей на объекты класса person
 	                                // создадим объекты класса person

@@ -3,8 +3,7 @@
 // friend.cpp
 // дружественные функции
 
-#include <io.h>       // для функции _setmode
-#include <fcntl.h>    // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>   // для функций ввода/вывода
 using namespace std;
 
@@ -39,7 +38,7 @@ int frifunc(alpha a, beta b)         // дружественная функци�
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	alpha aa;
 	beta bb;

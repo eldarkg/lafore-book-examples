@@ -20,8 +20,7 @@
 // При отсутствии операций преобразования не будут работать выражения вида (long double * bMoney)
 // или вида (long double / bMoney), проверить это.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипуляторов setiosflags, setprecision
 #include <sstream> // для стандартного класса wstringstream
@@ -83,9 +82,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wchar_t ans;         // для ответа пользователя о продолжении ввода (д/н)
 	bMoney m1, m2, mres; // для двух денежных сумм и результата операций

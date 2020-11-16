@@ -4,8 +4,7 @@
 // программа перевода времени из 24-часового формата в 12-часовой
 // с помощью конструктора с одним аргументом в классе, реализующем 12-часовой формат
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <string> // для стандартного класса wstring для работы со строками
 using namespace std;
@@ -98,9 +97,9 @@ time12::time12(time24 t24)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int h, m, s;
 

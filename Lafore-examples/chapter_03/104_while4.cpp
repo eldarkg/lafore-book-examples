@@ -4,8 +4,7 @@
 // возведение в четвертую степень целых чисел
 // (при этом задается ограничение результата: в нем должно быть не более 4 цифр)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setw
 using namespace std;
@@ -13,7 +12,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int pow = 1; // первое возводимое число равно 1
 	int numb = 1; // 1 в 4-й степени равна 1

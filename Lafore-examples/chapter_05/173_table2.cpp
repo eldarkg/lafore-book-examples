@@ -5,8 +5,7 @@
 // строку из 45 символов '*' (звездочка)
 // (с определением функции без предварительного использования прототипа)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -21,7 +20,7 @@ void starline() // заголовок функции
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	starline(); // вызов функции
 	wcout << L"Тип данных *             Диапазон" << endl;

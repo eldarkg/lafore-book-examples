@@ -8,8 +8,7 @@
 // и прибавить очередную введенную цифру. Перевод очередного полученного символа-цифры
 // в число осуществить вычитанием из его кода кода символа-цифры '0' или числа 48
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <conio.h> // для функции _getwche не понадобился
 using namespace std;
@@ -17,7 +16,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wchar_t ch; // вводимый пользователем символ-цифра
 	unsigned long n = 0; // итоговое число

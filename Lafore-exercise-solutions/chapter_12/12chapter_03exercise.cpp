@@ -5,8 +5,7 @@
 // файла программы, название которого задается нашей программе параметром
 // командной строки.
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для файлового ввода/вывода
 #include <iostream>
 using namespace std;
@@ -14,9 +13,9 @@ using namespace std;
 int wmain(int argc, wchar_t* argv[])
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ошибок в формат Юникода
-	_setmode(_fileno(stderr), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	if (argc != 2)             // проверка количества параметров
 	{

@@ -4,8 +4,7 @@
 // создать класс angle, представляющий широту или долготу координаты точки
 // в морской навигации
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setw
 using namespace std;
@@ -34,9 +33,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	wchar_t ch; // для ответа пользователя на вопрос о выходе из цикла
 	angle latitude(17, 31.5, L'S'), // создание двух объектов класса angle

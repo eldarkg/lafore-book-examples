@@ -6,8 +6,7 @@
 // Требуется написать программу в функции main для проверки этого шаблона
 // с несколькими базовыми числовыми типами (я выбрал int, double и wchar_t).
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -22,7 +21,7 @@ void swaps(T& arg1, T& arg2) // функции, меняющей местами 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int i1 = 23, i2 = 5;
 	wcout << L"int: " << i1 << L' ' << i2 << L", ";

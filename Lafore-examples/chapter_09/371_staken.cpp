@@ -3,8 +3,7 @@
 // staken.cpp
 // перегрузка функций базового класса в производном классе
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 // #include <process.h> // для функции exit не понадобился
@@ -46,7 +45,7 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Stack2 s1;
 

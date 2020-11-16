@@ -3,8 +3,7 @@
 // sort.cpp
 // сортирует массив целых чисел
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <algorithm> // для алгоритма sort
 using namespace std;
@@ -15,7 +14,7 @@ int arr[] = { 45, 2, 22, -17, 0, -30, 25, 55 };
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	sort(arr, arr + 8);          // сортировка
 

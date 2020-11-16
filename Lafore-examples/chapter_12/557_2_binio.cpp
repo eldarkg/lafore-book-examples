@@ -3,8 +3,7 @@
 // binio.cpp
 // двоичный вывод в файл и чтение из файла целых чисел
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>   // для файлового ввода/вывода
 #include <iostream>
 using namespace std;
@@ -15,9 +14,9 @@ int buff[MAX];       // буфер для целых чисел
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ошибок в формат Юникода
-	_setmode(_fileno(stderr), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	for (int j = 0; j < MAX; j++) // заполним буфер данными
 		buff[j] = j;              // (0, 1, 2, ...)

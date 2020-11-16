@@ -5,8 +5,7 @@
 // Для задания номера корабля использовать механизм из упражнения 8 главы 6.
 // Для координат использовать два поля класса angle из упражнения 7 главы 6.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setprecision
 using namespace std;
@@ -70,9 +69,9 @@ int ship::count = 0;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	ship s1, s2, s3; // создание трех объектов класса ship (то есть трех кораблей)
 

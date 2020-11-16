@@ -14,8 +14,7 @@
 // размер составляет sizeof(void*) байтов. Это решение не универсально, то есть
 // подходит не для всех компиляторов/операционных систем.
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <fstream>      // для файлового ввода/вывода
 #include <iostream>
 // #include <typeinfo>  // для функции typeid не понадобился
@@ -227,11 +226,11 @@ void employee::read()
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ошибок в формат Юникода
-	_setmode(_fileno(stderr), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wchar_t ch; // символ для выбора пользователя
 

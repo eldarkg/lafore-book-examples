@@ -3,8 +3,7 @@
 // strcopy1.cpp
 // посимвольное копирование строки с использованием цикла
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <cstring> // для функции wcslen (длина строки в символах) не понадобился
 using namespace std;
@@ -12,7 +11,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// исходная строка
 	wchar_t str1[] = L"Маленькой елочке холодно зимой,";

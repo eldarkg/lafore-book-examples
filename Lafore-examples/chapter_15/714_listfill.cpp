@@ -3,8 +3,7 @@
 // listfill.cpp
 // использует итератор для заполнения списка данными
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <list>      // для работы с контейнером list
 using namespace std;
@@ -12,7 +11,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	list<int> iList(5);     // пустой список для хранения 5 значений типа int
 	list<int>::iterator it; // итератор

@@ -3,8 +3,7 @@
 // 06chapter_08exercise.cpp
 // создать класс, умеющий подсчитывать количество своих объектов и нумеровать их
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -28,7 +27,7 @@ int objCounter::count = 0;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	objCounter obj1, obj2, obj3; // создание трех объектов класса objCounter
 

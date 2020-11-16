@@ -3,8 +3,7 @@
 // overengl.cpp
 // демонстрирует перегруженные функции (число аргументов одинаковое, типы разные)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -20,9 +19,9 @@ void engldisp(float);
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	Distance d1; // длина типа Distance
 	float d2;    // длина типа float

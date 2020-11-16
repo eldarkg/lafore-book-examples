@@ -3,8 +3,7 @@
 // vectcon.cpp
 // демонстрирует конструкторы вектора и его методы swap, empty, back, pop_back
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <vector>    // для работы с контейнером vector
 using namespace std;
@@ -12,7 +11,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	double arr[] = { 1.1, 2.2, 3.3, 4.4 }; // массив типа double
 

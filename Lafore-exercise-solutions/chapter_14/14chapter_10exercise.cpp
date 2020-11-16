@@ -42,8 +42,7 @@
 // вынести в main. Но такая дальнейшая работа уже выходит за рамки задания
 // к этому упражнению.
 
-#include <io.h>       // для функции _setmode
-#include <fcntl.h>    // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <string>     // для работы с классом wstring
 // #include <cstdlib> // для функций _wtoi, _wtof не понадобился
@@ -167,9 +166,9 @@ int isFeet(wstring str)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// проверка генерации исключений в конструкторе с 2 аргументами объекта
 	// класса Distance

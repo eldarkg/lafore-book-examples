@@ -17,8 +17,7 @@
 // делаем виртуальными, чтобы в main можно было использовать один и тот же вызов этих функций
 // для объектов разных классов, производных от базового (полиморфизм).
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <string> // для работы со строками wstring
 using namespace std;
@@ -93,9 +92,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	publication* pubPtr[100]; // массив указателей на объекты класса publication
 	int n = 0;                // количество действительно занятых элементов массива

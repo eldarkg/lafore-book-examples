@@ -7,17 +7,16 @@
 // (библиотеку) классов, реализующую ведение учета для нужд домовладельца,
 // то есть является клиентом по отношению к библиотеке классов
 
-#include <io.h>                     // для функции _setmode
-#include <fcntl.h>                  // для константы _O_U16TEXT
+#include <locale>
 
 #include "landlord.h"               // интерфейс библиотеки классов
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	userInterface theUserInterface; // интерфейс для пользователя (домовладельца)
 

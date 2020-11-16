@@ -4,8 +4,7 @@
 // использует алгоритм for_each для вывода на экран элементов массива,
 // содержащих значения в дюймах, переведенных в сантиметры
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <algorithm> // для алгоритма for_each
 using namespace std;
@@ -15,7 +14,7 @@ void in_to_cm(double); // объявление функции
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	// тестовый массив значений в дюймах
 	double inches[] = { 3.5, 6.2, 1.0, 12.75, 4.33 };

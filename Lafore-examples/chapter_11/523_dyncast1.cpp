@@ -7,8 +7,7 @@
 // В среде «Visual Studio Community 2017» возможность RTTI включается и выключается
 // с помощью ключа компилятора /GR. По умолчанию эта возможность включена.
 
-#include <io.h>       // для функции _setmode
-#include <fcntl.h>    // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>   // для функций ввода/вывода
 //#include <typeinfo> // для операции dynamic_cast не понадобился
 using namespace std;
@@ -40,7 +39,7 @@ bool isDerv1(Base* pUnknown)
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	Derv1* d1 = new Derv1;
 	Derv2* d2 = new Derv2;

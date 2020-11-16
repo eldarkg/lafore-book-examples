@@ -3,8 +3,7 @@
 // extern.cpp
 // демонстрирует работу с глобальными переменными
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <conio.h> // для функции _getwch не понадобился
 using namespace std;
@@ -17,7 +16,7 @@ void putachar();
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	while (ch != L'\r') // функция main() использует значение ch
 	{

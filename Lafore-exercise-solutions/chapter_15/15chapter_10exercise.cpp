@@ -35,8 +35,7 @@
 // Я решил не писать новую программу, а переписать программу из упомянутого выше
 // упражнения 8 текущей (15-й) главы.
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -45,9 +44,9 @@ const int MAX = 20; // размер массива
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// создадим массив целых чисел и заполним его
 	int arr[MAX];

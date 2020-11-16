@@ -3,8 +3,7 @@
 // listout.cpp
 // итератор и цикл for для вывода данных
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <list>         // для работы с контейнером list
 // #include <algorithm> // не понадобился
@@ -13,7 +12,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	int arr[] = { 2, 4, 6, 8 };
 	list<int> theList;

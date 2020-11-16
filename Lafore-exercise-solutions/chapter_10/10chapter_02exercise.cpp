@@ -10,8 +10,7 @@
 // для использования небезопасной функции wcscpy
 #define _CRT_SECURE_NO_WARNINGS
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <cstring> // для функций wcscpy и wcslen не понадобился
 // #include <cctype>  // для функции towupper не понадобился
@@ -38,9 +37,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// создадим объекты нашего класса String и покажем их на экране
 	String s1 = L"Тише едешь — дальше будешь.";         // кириллица

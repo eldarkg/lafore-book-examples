@@ -5,8 +5,7 @@
 // в банк на вклад с фиксированной процентной ставкой дохода на определенное количество лет.
 // Пользователь вводит начальную сумму вклада, процентную ставку и число лет.
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипулятора setprecision
 using namespace std;
@@ -14,9 +13,9 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	double Sum;  // сумма вклада
 	int Years;   // число лет

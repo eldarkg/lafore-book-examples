@@ -3,8 +3,7 @@
 // advennot.cpp
 // применение операции логического НЕ
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <process.h> // для функции exit() не понадобился
 // #include <conio.h> // для функции _getwche не понадобился
@@ -13,7 +12,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wchar_t dir = L'a';
 	int x = 10, y = 10;            // первоначальное местоположение

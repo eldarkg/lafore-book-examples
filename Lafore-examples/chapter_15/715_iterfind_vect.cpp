@@ -3,8 +3,7 @@
 // iterfind_vect.cpp
 // алгоритм find возвращает итератор на элемент в векторе
 
-#include <io.h>         // для функции _setmode
-#include <fcntl.h>      // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 // #include <algorithm> // не понадобился
 #include <vector>       // для работы с контейнером vector
@@ -13,7 +12,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	
 	vector<int> theVect(5);     // пустой вектор для хранения 5 значений типа int
 	vector<int>::iterator iter; // итератор

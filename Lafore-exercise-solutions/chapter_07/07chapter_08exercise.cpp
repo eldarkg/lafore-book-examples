@@ -6,8 +6,7 @@
 // определенного элемента из массива будут выполнены проверки, не нарушаются
 // ли границы массива; написать программу, демонстрирующую работу этого класса
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
@@ -27,9 +26,9 @@ public:
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	safearay sa1;        // объект класса safearay (безопасный массив)
 	int temp = 12345;    // тестовое число для записи в массив

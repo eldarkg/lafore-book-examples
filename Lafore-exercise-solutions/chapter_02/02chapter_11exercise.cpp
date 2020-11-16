@@ -4,8 +4,7 @@
 // вывести на экран заданную таблицу с выравниванием колонок по левому краю
 // с помощью манипуляторов setiosflags(ios::left) и setw
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 #include <iomanip> // для манипуляторов setiosflags и setw
 using namespace std;
@@ -13,7 +12,7 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	wcout << setiosflags(ios::left)
 		<< setw(16) << L"Фамилия" << setw(16) << L"Имя" << setw(16) << L"Адрес" << setw(16) << L"Город" << endl

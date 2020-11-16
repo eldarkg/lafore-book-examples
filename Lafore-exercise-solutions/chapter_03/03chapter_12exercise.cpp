@@ -4,17 +4,16 @@
 // Программа-калькулятор, выполняющая четыре арифметических действия над
 // обыкновенными дробями (вида a/b)
 
-#include <io.h> // для функции _setmode
-#include <fcntl.h> // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>
 using namespace std;
 
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	int a, b, c, d; // числители и знаменатели обыкновенных дробей
 	wchar_t slash;  // знак дроби

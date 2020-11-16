@@ -11,8 +11,7 @@
 // должна в цикле while скопировать все целые числа из исходного файла в файл
 // назначения с помощью входного и выходного итераторов.
 
-#include <io.h>      // для функции _setmode
-#include <fcntl.h>   // для константы _O_U16TEXT
+#include <locale>
 #include <iostream>  // для работы со стандартными потоками wcin и wcout
 #include <string>    // для работы с классом wstring
 #include <fstream>   // для работы с файловыми потоками
@@ -23,11 +22,11 @@ using namespace std;
 int main()
 {
 	// переключение стандартного потока вывода в формат Юникода
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ввода в формат Юникода
-	_setmode(_fileno(stdin), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 	// переключение стандартного потока ошибок в формат Юникода
-	_setmode(_fileno(stderr), _O_U16TEXT);
+	locale::global(locale("ru_RU.UTF-8"));
 
 	// получим от пользователя имена исходного файла и файла назначения
 	wstring iname, oname; // имена файлов
